@@ -20,9 +20,12 @@ jobs:
       - name: Install python packages
         run: python -m pip install -r requirements.txt
       - name: Execute python script
-        run: python script.py
+        run: python src\sample.py
+      - name: Test with pytest
+        run: |
+          pytest --junitxml=junit/test-results.xml
       - name: Create package
-        run: pyinstaller script.py
+        run: pyinstaller src\sample.py
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
@@ -42,9 +45,9 @@ jobs:
       - name: Install python packages
         run: python -m pip install -r requirements.txt
       - name: Execute python script
-        run: python script.py
+        run: python src\sample.py
       - name: Create package
-        run: pyinstaller script.py
+        run: pyinstaller src\sample.py
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}

@@ -1,0 +1,10 @@
+build
+dist
+junit
+*.log
+__pycache__
+.pytest_cache
+*.spec
+.venv*
+.vs
+.vscode
