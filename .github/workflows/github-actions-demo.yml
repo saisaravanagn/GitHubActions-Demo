@@ -5,17 +5,12 @@ on:
     branches:
       - main
 jobs:
-  Explore-GitHub-Actions-Windows:
+  Windows:
     runs-on: windows-2022
     steps:
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "OS - ${{ runner.os }}; Repository - ${{ github.repository }}; Branch - ${{ github.ref }}"
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - run: python --version
       - name: Install python packages
         run: python -m pip install -r requirements.txt
@@ -28,6 +23,8 @@ jobs:
         uses: test-summary/action@v2
         with:
           paths: "junit/*.xml"
+          output: "tests/summary.md"
+          show: "all"
         if: always()
       - name: Create package
         run: pyinstaller src/sample.py
@@ -35,17 +32,13 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  Explore-GitHub-Actions-Linux:
+
+  Linux:
     runs-on: ubuntu-22.04
     steps:
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "OS - ${{ runner.os }}; Repository - ${{ github.repository }}; Branch - ${{ github.ref }}"
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - run: python --version
       - name: Install python packages
         run: python -m pip install -r requirements.txt
