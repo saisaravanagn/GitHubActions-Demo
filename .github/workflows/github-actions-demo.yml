@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sample
-          path: dist/sample.exe
+          path: dist/sample/sample.exe
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
   Linux:
