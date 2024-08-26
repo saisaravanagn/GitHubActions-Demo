@@ -23,7 +23,7 @@ jobs:
         uses: test-summary/action@v2
         with:
           paths: "junit/*.xml"
-          output: "tests/summary.md"
+          # output: "tests/summary.md"
           show: "all"
         if: always()
       - name: Create package
